@@ -3,6 +3,7 @@ import { cors } from 'hono/cors'
 import { serveStatic } from 'hono/cloudflare-workers'
 import { renderer } from './renderer'
 import { mockGames } from './mockData'
+import { fetchCFBGames, fetchTeamInfo, getESPNTeamLogo, generateMockOdds } from './cfbService'
 
 const app = new Hono()
 
@@ -16,8 +17,71 @@ app.use('/static/*', serveStatic({ root: './public' }))
 app.use(renderer)
 
 // API Routes
-app.get('/api/games', (c) => {
-  return c.json({ games: mockGames })
+app.get('/api/games', async (c) => {
+  try {
+    const week = c.req.query('week') || '1';
+    const year = c.req.query('year') || '2025';
+    
+    // Fetch real CFB games
+    const cfbGames = await fetchCFBGames(parseInt(year), parseInt(week));
+    
+    if (cfbGames.length === 0) {
+      // Fallback to mock data if API fails
+      return c.json({ games: mockGames, source: 'mock' });
+    }
+    
+    // Transform CFBD data to our format with team logos
+    const games = await Promise.all(cfbGames.map(async (game, index) => {
+      // Fetch team info for logos and colors
+      const [homeTeamInfo, awayTeamInfo] = await Promise.all([
+        fetchTeamInfo(game.homeTeam),
+        fetchTeamInfo(game.awayTeam)
+      ]);
+      
+      // Format date/time
+      const gameDate = new Date(game.startDate);
+      const dayOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'][gameDate.getDay()];
+      const time = gameDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
+      
+      // Generate betting odds
+      const odds = generateMockOdds(game.homeTeam, game.awayTeam);
+      
+      return {
+        id: `${game.id}`,
+        dateTime: `${dayOfWeek} ${time}`,
+        sport: 'NCAAFB',
+        week: `Week ${game.week}`,
+        awayTeam: {
+          name: game.awayTeam,
+          abbreviation: awayTeamInfo?.abbreviation || game.awayTeam.substring(0, 4).toUpperCase(),
+          record: "0-0", // Would need additional API call for records
+          conferenceRecord: "0-0",
+          logo: awayTeamInfo?.logos?.[0] || getESPNTeamLogo(game.awayTeam),
+          color: awayTeamInfo?.color || '#000000',
+          altColor: awayTeamInfo?.alt_color || '#ffffff'
+        },
+        homeTeam: {
+          name: game.homeTeam,
+          abbreviation: homeTeamInfo?.abbreviation || game.homeTeam.substring(0, 4).toUpperCase(),
+          record: "0-0",
+          conferenceRecord: "0-0",
+          logo: homeTeamInfo?.logos?.[0] || getESPNTeamLogo(game.homeTeam),
+          color: homeTeamInfo?.color || '#000000',
+          altColor: homeTeamInfo?.alt_color || '#ffffff'
+        },
+        markets: odds,
+        publicBetting: {
+          awayPercentage: Math.floor(Math.random() * 40 + 30),
+          homePercentage: Math.floor(Math.random() * 40 + 30)
+        }
+      };
+    }));
+    
+    return c.json({ games, source: 'live', count: games.length });
+  } catch (error) {
+    console.error('Error in /api/games:', error);
+    return c.json({ games: mockGames, source: 'mock', error: String(error) });
+  }
 })
 
 // Main application route

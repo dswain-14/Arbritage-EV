@@ -135,16 +135,18 @@ function createGameCard(game) {
       <div class="mb-6">
         <div class="flex items-center justify-between mb-3 p-3 rounded-lg" style="background: rgba(15, 23, 42, 0.3);">
           <div class="flex items-center space-x-3">
+            ${awayTeam.logo ? `<img src="${awayTeam.logo}" alt="${awayTeam.name}" class="w-10 h-10 object-contain" onerror="this.style.display='none'">` : ''}
             ${awayTeam.ranking ? `<span class="font-bold text-xs px-2 py-1 rounded-full" style="font-family: 'Orbitron', monospace; background: var(--green-metallic); color: white;">#${awayTeam.ranking}</span>` : ''}
-            <span class="font-bold text-xl text-white" style="font-family: 'Orbitron', monospace;">${awayTeam.abbreviation}</span>
+            <span class="font-bold text-xl text-white" style="font-family: 'Orbitron', monospace;">${awayTeam.abbreviation || awayTeam.name}</span>
             <span class="text-slate-400 text-sm number-display">${awayTeam.record} (${awayTeam.conferenceRecord})</span>
           </div>
           <span class="text-slate-600 font-bold">AWAY</span>
         </div>
         <div class="flex items-center justify-between p-3 rounded-lg" style="background: rgba(15, 23, 42, 0.3);">
           <div class="flex items-center space-x-3">
+            ${homeTeam.logo ? `<img src="${homeTeam.logo}" alt="${homeTeam.name}" class="w-10 h-10 object-contain" onerror="this.style.display='none'">` : ''}
             ${homeTeam.ranking ? `<span class="font-bold text-xs px-2 py-1 rounded-full" style="font-family: 'Orbitron', monospace; background: var(--green-metallic); color: white;">#${homeTeam.ranking}</span>` : ''}
-            <span class="font-bold text-xl text-white" style="font-family: 'Orbitron', monospace;">${homeTeam.abbreviation}</span>
+            <span class="font-bold text-xl text-white" style="font-family: 'Orbitron', monospace;">${homeTeam.abbreviation || homeTeam.name}</span>
             <span class="text-slate-400 text-sm number-display">${homeTeam.record} (${homeTeam.conferenceRecord})</span>
           </div>
           <span class="text-slate-600 font-bold">HOME</span>
