@@ -1,6 +1,6 @@
-# Sports Betting Analytics - Outlier Style
+# Sports Betting Analytics - Modern Glass Morphism UI
 
-A modern, professional sports betting analytics web application featuring Expected Value (EV+) indicators, real-time odds tracking, and a sleek dark-themed UI inspired by Outlier's design philosophy.
+A cutting-edge sports betting analytics web application featuring Expected Value (EV+) indicators, real-time odds tracking, and a sophisticated glass morphism UI inspired by Gameday Plus design philosophy.
 
 ## 🌐 Live Demo
 
@@ -10,11 +10,13 @@ A modern, professional sports betting analytics web application featuring Expect
 
 ### Currently Completed Features
 
-✅ **Modern Dark Theme UI**
-- Professional dark color scheme (#1a1a1a background, #252525 cards)
-- Bright green EV+ indicators (#00ff88) that pulse with animation
-- Clean typography using system fonts
-- Responsive design for mobile, tablet, and desktop
+✅ **Modern Glass Morphism UI**
+- Advanced dark theme with multi-layered textured backgrounds
+- Glass morphism cards with backdrop blur (12px) and border effects
+- Metallic green gradients for EV+ indicators and branding elements
+- Professional Orbitron font for headings, JetBrains Mono for numbers
+- Sophisticated CSS animations: pulse effects, hover transforms, shine effects
+- Fully responsive design for mobile, tablet, and desktop
 
 ✅ **Game Cards with Comprehensive Information**
 - Game date/time display (e.g., "Fri 7:00 PM")
@@ -255,11 +257,13 @@ webapp/
 - **Framework**: Hono (lightweight, fast)
 - **Runtime**: Cloudflare Workers/Pages
 - **Build Tool**: Vite
-- **Styling**: Tailwind CSS (via CDN)
+- **Styling**: Custom CSS with Tailwind CSS (via CDN)
+- **Fonts**: Orbitron (headings), JetBrains Mono (numbers), Inter (body)
 - **Icons**: Font Awesome 6.4.0
 - **Language**: TypeScript
 - **Development**: PM2 + Wrangler
 - **Version Control**: Git
+- **Design**: Glass morphism, metallic gradients, CSS animations
 
 ## 🚀 Development
 
@@ -326,25 +330,32 @@ Returns all available games with betting markets.
 
 ## 🎨 Design Specifications
 
-### Colors
-- Background: `#1a1a1a` (dark-bg)
-- Cards: `#252525` (card-bg)
-- EV Green: `#00ff88` (ev-green)
-- Secondary Text: `#a0a0a0` (text-secondary)
-- Primary Text: `#ffffff` (white)
+### Colors & Gradients
+- **Background**: Multi-layered dark theme (#050506 to #0a0a0b)
+- **Glass Cards**: rgba(15, 23, 42, 0.3) with 12px backdrop blur
+- **EV Green Metallic**: linear-gradient(135deg, rgb(16,185,129), rgb(5,150,105), rgb(4,120,87))
+- **Text Primary**: #e0e0e0, #ffffff
+- **Text Secondary**: #94a3b8, #a0a0a0
+- **Borders**: rgba(148, 163, 184, 0.08) with glow effects
 
 ### Typography
-- Font: System UI stack (Inter, Roboto, Segoe UI)
-- Team Names: Bold, 16-18px
-- Records: Regular, 12-14px
-- Odds: Bold, 14px
-- EV Badges: Bold, 12px
+- **Headings**: Orbitron (600-900 weight), 16-32px
+- **Numbers**: JetBrains Mono (monospace, tabular), 14-40px
+- **Body**: Inter, System UI stack
+- **Special Features**: -webkit-font-smoothing, optimizeLegibility
+
+### Visual Effects
+- **Glass Morphism**: backdrop-filter: blur(12px)
+- **Metallic Gradients**: 5-color stop gradients with box-shadow
+- **Pulse Animation**: 2s infinite for EV+ badges (0-6px shadow spread)
+- **Hover Transforms**: translateY(-2px to -4px) with 300ms cubic-bezier
+- **Textured Background**: 10+ layered patterns (grid, radial, linear gradients)
 
 ### Interactions
-- Hover states: 150ms transitions
-- Bet selection: Green border highlight
-- EV badges: 2s pulse animation
-- Sport categories: Background color change
+- **Card Hover**: Transform, border glow, shadow enhancement
+- **Bet Selection**: Green border (2px), background tint, box-shadow
+- **Sport Categories**: Metallic gradient background when active
+- **Smooth Transitions**: 150-300ms with cubic-bezier easing
 
 ## 🔒 Security Notes
 
