@@ -30,7 +30,7 @@ app.get('/', (c) => {
           {/* Left: Logo & Title */}
           <div class="flex items-center gap-4">
             <div class="w-16 h-16 rounded-xl flex items-center justify-center" style="background: var(--green-metallic); box-shadow: 0 4px 12px rgba(0,255,136,0.3), inset 0 1px 0 rgba(255,255,255,0.2);">
-              <i class="fas fa-chart-line text-white text-2xl"></i>
+              <span class="text-white text-4xl font-black tracking-tighter" style="font-family: 'Orbitron', sans-serif;">G+</span>
             </div>
             <div>
               <h1 class="text-2xl md:text-3xl font-bold tracking-tight text-white" style="font-family: 'Orbitron', monospace;">
