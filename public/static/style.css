@@ -1,48 +1,228 @@
-/* Custom styles for Sports Betting Analytics */
+/* Modern Sports Betting Analytics - Gameday Plus Style */
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+/* CSS Variables for Modern Gradients */
+:root {
+  --gameday-red: #C41E3A;
+  --gameday-dark-red: #8B0000;
+  --gameday-light-red: #FF6B6B;
+  --gameday-metallic: linear-gradient(135deg, rgb(204,0,28), rgb(161,0,20), rgb(115,0,13), rgb(161,0,20), rgb(204,0,28));
+  --gameday-chrome: linear-gradient(135deg, rgb(204,0,28), rgb(161,0,20), rgb(115,0,13), rgb(161,0,20), rgb(204,0,28));
+  --silver-metallic: linear-gradient(135deg, rgb(229,231,235), rgb(156,163,175), rgb(107,114,128), rgb(156,163,175), rgb(229,231,235));
+  --green-metallic: linear-gradient(135deg, rgb(16,185,129), rgb(5,150,105), rgb(4,120,87), rgb(5,150,105), rgb(16,185,129));
+  --gold-metallic: linear-gradient(135deg, rgb(245,158,11), rgb(217,119,6), rgb(180,83,9), rgb(217,119,6), rgb(245,158,11));
+}
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
+/* Modern Textured Dark Background */
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family: 'Orbitron', 'Inter', system-ui, sans-serif;
+  background: 
+    linear-gradient(135deg, #050506 0%, #0a0a0b 25%, #060607 50%, #080809 75%, #050506 100%),
+    radial-gradient(ellipse at top left, rgba(12, 12, 14, 0.3), transparent 50%),
+    radial-gradient(ellipse at bottom right, rgba(10, 10, 12, 0.3), transparent 50%),
+    linear-gradient(180deg, #070708 0%, #030304 100%);
+  min-height: 100vh;
+  position: relative;
+  color: #e0e0e0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-smooth: always;
 }
 
-/* Smooth transitions */
-.transition-all {
-  transition: all 150ms ease-in-out;
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 0.5px,
+      rgba(255, 255, 255, 0.025) 0.5px,
+      rgba(255, 255, 255, 0.025) 1px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 0.5px,
+      rgba(255, 255, 255, 0.025) 0.5px,
+      rgba(255, 255, 255, 0.025) 1px
+    ),
+    repeating-linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.02) 0px,
+      rgba(255, 255, 255, 0.02) 0.5px,
+      transparent 0.5px,
+      transparent 4px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      rgba(255, 255, 255, 0.02) 0px,
+      rgba(255, 255, 255, 0.02) 0.5px,
+      transparent 0.5px,
+      transparent 4px
+    ),
+    repeating-linear-gradient(
+      30deg,
+      rgba(0, 255, 136, 0.035) 0px,
+      rgba(0, 255, 136, 0.035) 1px,
+      transparent 1px,
+      transparent 16px
+    ),
+    repeating-linear-gradient(
+      -30deg,
+      rgba(16, 185, 129, 0.035) 0px,
+      rgba(16, 185, 129, 0.035) 1px,
+      transparent 1px,
+      transparent 16px
+    ),
+    radial-gradient(
+      ellipse at 25% 15%, 
+      rgba(0, 255, 136, 0.12) 0%, 
+      rgba(16, 185, 129, 0.08) 30%,
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse at 75% 85%, 
+      rgba(4, 120, 87, 0.12) 0%, 
+      rgba(16, 185, 129, 0.08) 30%,
+      transparent 60%
+    ),
+    radial-gradient(
+      circle at 50% 30%, 
+      rgba(255, 255, 255, 0.06) 0%, 
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 80% 70%, 
+      rgba(0, 255, 136, 0.06) 0%, 
+      transparent 25%
+    );
+  background-size: 
+    1px 1px,
+    1px 1px,
+    4px 4px,
+    4px 4px,
+    16px 16px,
+    16px 16px,
+    800px 800px,
+    700px 700px,
+    400px 400px,
+    300px 300px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 1;
 }
 
-/* Custom scrollbar for dark theme */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.06) 0%,
+      rgba(240, 250, 255, 0.02) 10%,
+      transparent 25%,
+      transparent 75%,
+      rgba(0, 0, 0, 0.25) 100%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.04) 0%,
+      transparent 30%,
+      transparent 70%,
+      rgba(0, 0, 0, 0.08) 100%
+    ),
+    radial-gradient(
+      ellipse at 20% 20%, 
+      rgba(255, 255, 255, 0.08) 0%, 
+      transparent 40%
+    ),
+    radial-gradient(
+      ellipse at 80% 80%, 
+      rgba(0, 0, 0, 0.15) 0%, 
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 50% 50%, 
+      transparent 0%, 
+      rgba(0, 0, 0, 0.18) 100%
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Glass Card Effects */
+.glass-card {
+  background: rgba(15, 23, 42, 0.3);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(148, 163, 184, 0.08);
+  border-radius: 0.75rem;
+  position: relative;
+  z-index: 10;
+  isolation: isolate;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.glass-card:hover {
+  border-color: rgba(148, 163, 184, 0.12);
+  transform: translateY(-2px);
+}
+
+.stat-card {
+  background: rgba(15, 23, 42, 0.3);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(148, 163, 184, 0.05);
+  border-radius: 1rem;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(148, 163, 184, 0.15);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #1a1a1a;
+  background: rgba(15, 23, 42, 0.3);
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #555;
-  border-radius: 5px;
+  background: rgba(148, 163, 184, 0.3);
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #777;
-}
-
-/* Hover effects */
-.bet-option:hover {
-  background-color: rgba(255, 255, 255, 0.05);
-  transform: translateY(-1px);
-}
-
-.bet-option:active {
-  transform: translateY(0);
+  background: rgba(148, 163, 184, 0.5);
 }
 
 /* EV+ Badge pulse animation */
@@ -51,48 +231,88 @@ body {
     box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.4);
   }
   50% {
-    box-shadow: 0 0 0 4px rgba(0, 255, 136, 0);
+    box-shadow: 0 0 0 6px rgba(0, 255, 136, 0);
   }
 }
 
 .ev-badge {
   animation: pulse-green 2s infinite;
+  background: var(--green-metallic);
+  color: white;
+  font-weight: 700;
+  padding: 0.375rem 0.75rem;
+  border-radius: 9999px;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+  box-shadow: 
+    0 4px 12px rgba(0, 255, 136, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
 }
 
-/* Sport category active state */
-.sport-category.active {
-  background-color: #00ff88;
-  color: #1a1a1a;
+/* Sport category buttons */
+.sport-category {
+  background: rgba(15, 23, 42, 0.3);
+  backdrop-filter: blur(8px);
+  color: #94a3b8;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
 }
 
 .sport-category:hover {
-  background-color: rgba(0, 255, 136, 0.1);
+  background: rgba(15, 23, 42, 0.5);
+  color: #e2e8f0;
+  border-color: rgba(148, 163, 184, 0.3);
+  transform: translateY(-1px);
+}
+
+.sport-category.active {
+  background: var(--green-metallic);
+  color: white;
+  border: 1px solid rgba(0, 255, 136, 0.5);
+  box-shadow: 0 4px 12px rgba(0, 255, 136, 0.3);
+}
+
+/* Number displays */
+.number-display {
+  font-family: 'JetBrains Mono', 'SF Mono', 'Monaco', 'Courier New', monospace;
+  font-feature-settings: 'tnum' 1, 'zero' 1;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 /* Dropdown styles */
 select {
   appearance: none;
+  background-color: rgba(15, 23, 42, 0.5);
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23ffffff'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 0.5rem center;
   background-size: 1.5em 1.5em;
   padding-right: 2.5rem;
+  border: 1px solid rgba(148, 163, 184, 0.2);
 }
 
-/* Loading skeleton */
-@keyframes skeleton-loading {
-  0% {
-    background-position: -200% 0;
-  }
-  100% {
-    background-position: 200% 0;
-  }
+select:hover {
+  border-color: rgba(148, 163, 184, 0.3);
+  background-color: rgba(15, 23, 42, 0.7);
 }
 
-.skeleton {
-  background: linear-gradient(90deg, #252525 25%, #333 50%, #252525 75%);
-  background-size: 200% 100%;
-  animation: skeleton-loading 1.5s ease-in-out infinite;
+select:focus {
+  outline: none;
+  border-color: rgba(0, 255, 136, 0.5);
+  box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.1);
 }
 
 /* Toggle switch */
@@ -116,9 +336,10 @@ select {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #555;
+  background-color: rgba(71, 85, 105, 0.5);
   transition: 0.3s;
   border-radius: 24px;
+  border: 1px solid rgba(148, 163, 184, 0.2);
 }
 
 .toggle-slider:before {
@@ -127,18 +348,84 @@ select {
   height: 18px;
   width: 18px;
   left: 3px;
-  bottom: 3px;
+  bottom: 2px;
   background-color: white;
   transition: 0.3s;
   border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 input:checked + .toggle-slider {
-  background-color: #00ff88;
+  background: var(--green-metallic);
+  border-color: rgba(0, 255, 136, 0.5);
 }
 
 input:checked + .toggle-slider:before {
   transform: translateX(24px);
+}
+
+/* Game cards */
+.game-card {
+  background: rgba(15, 23, 42, 0.3);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(148, 163, 184, 0.08);
+  border-radius: 0.75rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.game-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(148, 163, 184, 0.15);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+/* Bet options */
+.bet-option {
+  background: rgba(15, 23, 42, 0.4);
+  border: 1px solid rgba(148, 163, 184, 0.1);
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.bet-option:hover {
+  background: rgba(15, 23, 42, 0.6);
+  border-color: rgba(0, 255, 136, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 255, 136, 0.2);
+}
+
+.bet-option.selected {
+  background: rgba(0, 255, 136, 0.1);
+  border-color: #00ff88;
+  border-width: 2px;
+  box-shadow: 0 4px 16px rgba(0, 255, 136, 0.3);
+}
+
+/* Loading skeleton */
+@keyframes skeleton-loading {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(15, 23, 42, 0.3) 25%,
+    rgba(30, 41, 59, 0.5) 50%,
+    rgba(15, 23, 42, 0.3) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s ease-in-out infinite;
+  border-radius: 0.75rem;
 }
 
 /* Responsive game grid */
@@ -148,4 +435,40 @@ input:checked + .toggle-slider:before {
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
     gap: 1rem;
   }
+}
+
+/* Text rendering optimizations */
+h1, h2, h3, h4, h5, h6, p, span, div {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Metallic gradient text */
+.metallic-text {
+  background: var(--green-metallic);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Shine effect for special elements */
+@keyframes shine {
+  0% {
+    background-position: -100% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.shine-effect {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shine 3s infinite;
 }

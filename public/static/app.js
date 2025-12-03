@@ -118,67 +118,84 @@ function createGameCard(game) {
   const { awayTeam, homeTeam, markets, dateTime, publicBetting } = game;
   
   return `
-    <div class="bg-card-bg rounded-lg shadow-lg p-4 mb-4 hover:shadow-xl transition-all">
+    <div class="game-card p-6 mb-4">
       <!-- Game Header -->
-      <div class="flex justify-between items-center mb-3 pb-3 border-b border-gray-700">
-        <div class="text-text-secondary text-sm font-medium">
-          <i class="far fa-clock mr-1"></i>
+      <div class="flex justify-between items-center mb-4 pb-4 border-b border-slate-700/30">
+        <div class="text-slate-400 text-sm font-medium" style="font-family: 'JetBrains Mono', monospace;">
+          <i class="far fa-clock mr-2 text-emerald-400"></i>
           ${dateTime}
         </div>
-        <button class="text-text-secondary hover:text-white text-sm transition-all">
+        <button class="text-slate-400 hover:text-emerald-400 text-sm transition-all font-medium">
           <i class="fas fa-info-circle mr-1"></i>
           Match Details
         </button>
       </div>
 
       <!-- Teams -->
-      <div class="mb-4">
-        <div class="flex items-center justify-between mb-2">
-          <div class="flex items-center space-x-2">
-            ${awayTeam.ranking ? `<span class="text-ev-green font-bold text-sm">#${awayTeam.ranking}</span>` : ''}
-            <span class="font-bold text-lg">${awayTeam.abbreviation}</span>
-            <span class="text-text-secondary text-sm">${awayTeam.record} (${awayTeam.conferenceRecord})</span>
+      <div class="mb-6">
+        <div class="flex items-center justify-between mb-3 p-3 rounded-lg" style="background: rgba(15, 23, 42, 0.3);">
+          <div class="flex items-center space-x-3">
+            ${awayTeam.ranking ? `<span class="font-bold text-xs px-2 py-1 rounded-full" style="font-family: 'Orbitron', monospace; background: var(--green-metallic); color: white;">#${awayTeam.ranking}</span>` : ''}
+            <span class="font-bold text-xl text-white" style="font-family: 'Orbitron', monospace;">${awayTeam.abbreviation}</span>
+            <span class="text-slate-400 text-sm number-display">${awayTeam.record} (${awayTeam.conferenceRecord})</span>
           </div>
+          <span class="text-slate-600 font-bold">AWAY</span>
         </div>
-        <div class="flex items-center justify-between">
-          <div class="flex items-center space-x-2">
-            ${homeTeam.ranking ? `<span class="text-ev-green font-bold text-sm">#${homeTeam.ranking}</span>` : ''}
-            <span class="font-bold text-lg">${homeTeam.abbreviation}</span>
-            <span class="text-text-secondary text-sm">${homeTeam.record} (${homeTeam.conferenceRecord})</span>
+        <div class="flex items-center justify-between p-3 rounded-lg" style="background: rgba(15, 23, 42, 0.3);">
+          <div class="flex items-center space-x-3">
+            ${homeTeam.ranking ? `<span class="font-bold text-xs px-2 py-1 rounded-full" style="font-family: 'Orbitron', monospace; background: var(--green-metallic); color: white;">#${homeTeam.ranking}</span>` : ''}
+            <span class="font-bold text-xl text-white" style="font-family: 'Orbitron', monospace;">${homeTeam.abbreviation}</span>
+            <span class="text-slate-400 text-sm number-display">${homeTeam.record} (${homeTeam.conferenceRecord})</span>
           </div>
+          <span class="text-slate-600 font-bold">HOME</span>
         </div>
       </div>
 
       <!-- Betting Markets -->
-      <div class="grid grid-cols-3 gap-3 mb-3">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
         <!-- Moneyline -->
         <div>
-          <div class="text-text-secondary text-xs uppercase tracking-wide mb-2 font-semibold">Moneyline</div>
+          <div class="text-slate-400 text-xs uppercase tracking-wider mb-3 font-bold" style="font-family: 'Orbitron', monospace;">
+            <i class="fas fa-dollar-sign mr-1 text-emerald-400"></i>
+            Moneyline
+          </div>
           ${createBetOptions(markets.moneyline, game.id, 'moneyline')}
         </div>
         
         <!-- Spread -->
         <div>
-          <div class="text-text-secondary text-xs uppercase tracking-wide mb-2 font-semibold">Spread</div>
+          <div class="text-slate-400 text-xs uppercase tracking-wider mb-3 font-bold" style="font-family: 'Orbitron', monospace;">
+            <i class="fas fa-chart-line mr-1 text-amber-400"></i>
+            Spread
+          </div>
           ${createBetOptions(markets.spread, game.id, 'spread')}
         </div>
         
         <!-- Total -->
         <div>
-          <div class="text-text-secondary text-xs uppercase tracking-wide mb-2 font-semibold">Total</div>
+          <div class="text-slate-400 text-xs uppercase tracking-wider mb-3 font-bold" style="font-family: 'Orbitron', monospace;">
+            <i class="fas fa-calculator mr-1 text-blue-400"></i>
+            Total
+          </div>
           ${createBetOptions(markets.total, game.id, 'total')}
         </div>
       </div>
 
       ${appState.showPublicBetting && publicBetting ? `
-        <div class="mt-3 pt-3 border-t border-gray-700">
-          <div class="text-text-secondary text-xs uppercase tracking-wide mb-2 font-semibold">
-            <i class="fas fa-users mr-1"></i>
+        <div class="mt-4 pt-4 border-t border-slate-700/30">
+          <div class="text-slate-400 text-xs uppercase tracking-wider mb-3 font-bold" style="font-family: 'Orbitron', monospace;">
+            <i class="fas fa-users mr-1 text-purple-400"></i>
             Public Betting
           </div>
-          <div class="flex justify-between text-sm">
-            <span>${awayTeam.abbreviation}: ${publicBetting.awayPercentage}%</span>
-            <span>${homeTeam.abbreviation}: ${publicBetting.homePercentage}%</span>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="p-3 rounded-lg" style="background: rgba(15, 23, 42, 0.3);">
+              <div class="text-xs text-slate-500 mb-1">${awayTeam.abbreviation}</div>
+              <div class="text-lg font-bold text-white number-display">${publicBetting.awayPercentage}%</div>
+            </div>
+            <div class="p-3 rounded-lg" style="background: rgba(15, 23, 42, 0.3);">
+              <div class="text-xs text-slate-500 mb-1">${homeTeam.abbreviation}</div>
+              <div class="text-lg font-bold text-white number-display">${publicBetting.homePercentage}%</div>
+            </div>
           </div>
         </div>
       ` : ''}
@@ -190,14 +207,14 @@ function createGameCard(game) {
 function createBetOptions(options, gameId, market) {
   return options.map(option => `
     <button 
-      class="bet-option w-full bg-gray-800 hover:bg-gray-700 rounded px-3 py-2 mb-2 text-left transition-all cursor-pointer relative"
+      class="bet-option w-full rounded-lg px-4 py-3 mb-2 text-left transition-all cursor-pointer relative"
       data-game-id="${gameId}"
       data-market="${market}"
       data-label="${option.label}"
     >
       <div class="flex justify-between items-center">
-        <span class="font-medium text-sm">${option.label}</span>
-        <span class="font-bold text-sm">${option.odds}</span>
+        <span class="font-semibold text-sm text-white">${option.label}</span>
+        <span class="font-bold text-sm text-emerald-400 number-display">${option.odds}</span>
       </div>
       ${option.hasEV ? `
         <div class="absolute -top-1 -right-1 bg-ev-green text-dark-bg text-xs font-bold px-2 py-1 rounded ev-badge">
