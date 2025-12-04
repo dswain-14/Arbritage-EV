@@ -6,7 +6,11 @@ A cutting-edge sports betting analytics web application featuring Expected Value
 
 **New to the project?** See [QUICKSTART.md](QUICKSTART.md) for step-by-step instructions to get the development server running.
 
-**TL;DR**: Run `./start-dev.sh` to start the development server on port 3000.
+**TL;DR**: 
+```bash
+chmod +x start-dev.sh  # First time only
+./start-dev.sh         # Start the server
+```
 
 ## 🌐 Live Demo
 

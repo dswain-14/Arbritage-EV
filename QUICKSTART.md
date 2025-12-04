@@ -14,6 +14,10 @@ This guide will help you get the Sports Betting Analytics application running on
 The easiest way to start the development server:
 
 ```bash
+# Make the script executable (first time only)
+chmod +x start-dev.sh
+
+# Run the startup script
 ./start-dev.sh
 ```
 

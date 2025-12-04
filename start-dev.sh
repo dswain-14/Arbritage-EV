@@ -2,6 +2,9 @@
 
 # Sports Betting Analytics - Development Server Startup Script
 # This script ensures the development server starts correctly in sandbox/cloud environments
+#
+# First time usage: Make this script executable with: chmod +x start-dev.sh
+# Then run: ./start-dev.sh
 
 set -e
 
