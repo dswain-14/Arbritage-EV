@@ -2,6 +2,16 @@
 
 A cutting-edge sports betting analytics web application featuring Expected Value (EV+) indicators, real-time odds tracking, and a sophisticated glass morphism UI inspired by Gameday Plus design philosophy.
 
+## 🚀 Quick Start
+
+**New to the project?** See [QUICKSTART.md](QUICKSTART.md) for step-by-step instructions to get the development server running.
+
+**TL;DR**: 
+```bash
+chmod +x start-dev.sh  # First time only
+./start-dev.sh         # Start the server
+```
+
 ## 🌐 Live Demo
 
 **Production URL**: https://3000-iuqucy9do7pgtnix7db1s-b9b802c4.sandbox.novita.ai
@@ -267,13 +277,35 @@ webapp/
 
 ## 🚀 Development
 
+### Quick Start
+
+For detailed setup instructions, see [QUICKSTART.md](QUICKSTART.md).
+
+**Fastest way to start:**
+```bash
+./start-dev.sh
+```
+
 ### Setup
 ```bash
-cd /home/user/webapp
 npm install
 ```
 
 ### Local Development
+
+**Recommended for Sandbox/Cloud Environments:**
+```bash
+# Build first
+npm run build
+
+# Start development server (binds to 0.0.0.0:3000)
+npm run dev:sandbox
+
+# Or use the startup script
+./start-dev.sh
+```
+
+**Alternative with PM2:**
 ```bash
 # Build first
 npm run build
