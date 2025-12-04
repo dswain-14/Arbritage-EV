@@ -29,8 +29,11 @@ echo "✅ Build completed"
 echo ""
 
 # Step 3: Clean port if needed (optional, may not work in all environments)
+# Note: This step attempts to free port 3000 if it's already in use.
+# It's safe to ignore failures here - if the port is free, fuser returns an error which we ignore.
+# If the command doesn't exist on the system, it also safely fails without stopping the script.
 echo "🧹 Cleaning port 3000 (if in use)..."
-npm run clean-port || true
+npm run clean-port 2>/dev/null || echo "   (Port cleaning skipped - not needed or command unavailable)"
 echo ""
 
 # Step 4: Start the development server
